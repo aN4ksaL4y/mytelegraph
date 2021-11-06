@@ -82,11 +82,14 @@ def main(
 		author_url = args_author_url
 	else:
 		author_url = author_url
-	a = open(html_file).read()
-	if string_input:
-		content = html_to_nodes(string_input)
+	if html_file:
+		a = open(html_file).read()
+		content = html_to_node(a)
 	else:
-		content = html_to_nodes(a)
+		if string_input:
+			content = html_to_nodes(string_input)
+		else:
+			return None
 	content_json = json.dumps(content, ensure_ascii=False)
 	data = {
 		'access_token':token,
