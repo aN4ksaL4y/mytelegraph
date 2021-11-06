@@ -8,6 +8,7 @@ import requests
 from telegraph.api import Telegraph
 from telegraph.conf import token
 from telegraph.utils import html_to_nodes
+from icecream import ic
 
 __author__="Muhammad Al Fajri"
 __email__="fajrim228@gmail.com"
@@ -64,12 +65,15 @@ def main(
 	if args_filename:
 		html_file = args_filename
 	elif not args_filename:
-		html_file = os.getenv('HTML_FILE')
-	else:
-		return None
+		ic()
+		try:	
+			html_file = os.getenv('HTML_FILE')
+		except:
+			return None
 	if args_title:
 		title = args_title
 	else:
+		ic()
 		try:
 			title = html_file.replace('-', ' ')
 		except:
@@ -104,4 +108,5 @@ def main(
 			create_page('createPage', data)['result']
 		)
 	except Exception as e:
+		ic()
 		return None
