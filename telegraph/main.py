@@ -70,7 +70,10 @@ def main(
 	if args_title:
 		title = args_title
 	else:
-		title = html_file.replace('-', ' ')
+		try:
+			title = html_file.replace('-', ' ')
+		except:
+			title = 'No Title'
 	if args_author:
 		author_name = args_author
 	else:
