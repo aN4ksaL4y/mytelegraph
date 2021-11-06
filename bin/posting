@@ -4,6 +4,7 @@ __author__="Muhammad Al Fajri"
 __email__="fajrim228@gmail.com"
 __telegram__="ini_peninggi_badan"
 
+import os
 import sys
 import json
 import argparse
@@ -16,7 +17,11 @@ author_name = __author__
 author_url = "https://t.me/" + __telegram__
 
 ALLOWED_TAG = [
-'a', 'aside', 'b', 'blockquote', 'br', 'code', 'em', 'figcaption', 'figure','h3', 'h4', 'hr', 'i', 'iframe', 'img', 'li', 'ol', 'p', 'pre', 's', 'strong', 'u', 'ul', 'video','address', 'article', 'aside', 'blockquote', 'canvas', 'dd', 'div', 'dl','dt', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2','h3', 'h4', 'h5', 'h6', 'header', 'hgroup', 'hr', 'li', 'main', 'nav','noscript', 'ol', 'output', 'p', 'pre', 'section', 'table', 'tfoot', 'ul'
+'a', 'aside', 'b', 'blockquote', 'br', 'code', 'em', 'figcaption', 'figure','h3', 'h4', 'hr', 'i', 
+'iframe', 'img', 'li', 'ol', 'p', 'pre', 's', 'strong', 'u', 'ul', 'video','address', 'article', 
+'aside', 'blockquote', 'canvas', 'dd', 'div', 'dl','dt', 'fieldset', 'figcaption', 'figure', 'footer', 
+'form', 'h1', 'h2','h3', 'h4', 'h5', 'h6', 'header', 'hgroup', 'hr', 'li', 'main', 'nav','noscript', 
+'ol', 'output', 'p', 'pre', 'section', 'table', 'tfoot', 'ul'
 ]
 
 def create_page(path, values: dict = None):
@@ -25,9 +30,7 @@ def create_page(path, values: dict = None):
 	"""
 	try:
 		r = requests.post(f'https://api.telegra.ph/{path}', params=values)
-		# assert r.status_code == 200,''
-		# string = json.dumps(r.json(), indent=4)
-		return r.text
+		return r.json()
 	except Exception as e:
 		raise e
 	
@@ -65,7 +68,8 @@ if __name__=='__main__':
 	if args.filename:
 		html_file = args.filename
 	else:
-		html_file = input('filename: str -> ')
+		# html_file = input('filename: str -> ')
+		html_file = os.getenv('HTML_FILE')
 	if args.title:
 		title = args.title
 	else:
