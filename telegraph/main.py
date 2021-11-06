@@ -3,10 +3,12 @@
 import os
 import sys
 import json
+import faker
 import argparse
+import subprocess
+import logging
 import requests 
 from telegraph.api import Telegraph
-from telegraph.conf import token
 from telegraph.utils import html_to_nodes
 from icecream import ic
 
@@ -14,6 +16,7 @@ __author__="Muhammad Al Fajri"
 __email__="fajrim228@gmail.com"
 __telegram__="https://t.me/ini_peninggi_badan"
 
+# logging.basicConfig(level=logging.DEBUG)
 def create_page(path, values: dict = None):
 	"""
 	Simple!
@@ -41,17 +44,20 @@ def create_token(author: str, short_name: str):
 		'author_name':author
 	}
 	r = requests.post('https://api.telegra.ph/createAccount', params=data)
-	return r.text
+	return r.json()
 	
 def main(
 		string_input: str = None,
 		args_filename: str = None,
-		args_title: str = None,
 		args_author: str = None,
 		args_author_url: str = None,
-		args_page: str = None
+		args_page: str = None,
+		args_title: str = 'Couldn\'t find any title'
 	):
 	global __author__
+	name = faker.Faker().name()
+	short_name = name.split()[0]
+	token = create_token(name, short_name)['result']['access_token']
 	author_name = __author__
 	author_url = "https://t.me/" + __telegram__
 	'''
@@ -105,8 +111,7 @@ def main(
 	}
 	try:
 		return (
-			create_page('createPage', data)['result']
+			create_page('createPage', data)['result']['url']
 		)
 	except Exception as e:
-		ic()
 		return None
