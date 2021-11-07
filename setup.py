@@ -2,7 +2,7 @@ from setuptools import setup
 
 long_description = open('README.md').read()
 setup(
-	version='0.0.6',
+	version='0.0.7',
 	url='https://github.com/aN4ksaL4y/mytelegraph',
 	name='mytelegraph',
 	author='Muhammad Al Fajri',
