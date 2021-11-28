@@ -43,7 +43,7 @@ if __name__=='__main__':
 		r = convert(filename)
 		sys.exit(0)
 	if args.upload:
-		filename = input("filename: str -> ")
+		filename = args.upload
 		r = t.upload_file(filename)
 		print("https://telegra.ph" + r[0])
 		sys.exit(0)
@@ -69,7 +69,7 @@ if __name__=='__main__':
 	a = open(html_file).read()
 	content = html_to_nodes(a)
 	content_json = json.dumps(content, ensure_ascii=False)
-	# print(content_json)
+	endpoint = title.replace(' ', '---').lower()
 	data = {
 		'access_token':token,
 		'title': title,
@@ -78,6 +78,9 @@ if __name__=='__main__':
 		'content': content_json,
 		'return_content': True
 	}
-	print(
+	url = (
 		create_page('createPage', data)['result']['url']
 	)
+	new_url = requests.post('http://ik-a.herokuapp.com/custom', json={'id':endpoint, 'url':url}).json()['url']
+	os.system('clear')
+	print(new_url)

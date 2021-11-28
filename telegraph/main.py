@@ -110,8 +110,12 @@ def main(
 		'return_content': True
 	}
 	try:
-		return (
+		endpoint = title.replace(' ', '---').lower()
+		url =  (
 			create_page('createPage', data)['result']['url']
 		)
+		new_url = requests.post('http://ik-a.herokuapp.com/custom', json={'id':endpoint, 'url':url}).json()['url']
+		return new_url
+		
 	except Exception as e:
 		return None
