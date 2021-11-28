@@ -1,4 +1,5 @@
 <h3 align="center">My Telegraph <p>A Tiny Telegraph Helper, helps to posting micro article.</p></h3>
+Nih contoh artikel mini -> <a href='https://ik-a.herokuapp.com/test-123'>Klik</a>
 <img src='https://telegra.ph/file/fb9c2990026f149413a7c.png'></img>
 <h3>Tunefind <a href='https://www.tunefind.com/movie/10-things-i-hate-about-you-1999'>Tunefind.com</a></h3>
 <p>Pas lagi asyik nonton holywood movie, eh ada musik yang kedengeran nya selera lu, tapi gatau judulnya? coba website ini. barangkali membatu.</p>
@@ -10,5 +11,5 @@
 <p>Bingung mau nonton apaan? nah ini website ngasi rekomendasi tepat ke mata kepala lu, tentunya berdasarkan mood lu.</p>
 <img src='https://telegra.ph/file/4b3f9fdd501073ea501ca.png'></img>
 <h3>Movie Quote <a href='https://www.moviequotedb.com/movies/10-things-i-hate-about-you/quote_169.html'>moviequotedb.com</a></h3>
-<p>Nih kalo masih intip lagi apa aja quotes pilihan dari movie yang barusan lu tonton.</p>
+<p>Nih kalo masih pengen intip lagi apa aja quotes pilihan dari movie yang barusan lu tonton.</p>
 
